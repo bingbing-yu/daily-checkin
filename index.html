@@ -7,67 +7,138 @@
 <link rel="manifest" href="manifest.json">
 <title>我的每日打卡</title>
 <style>
-*{box-sizing:border-box}html,body{width:100%;max-width:100%;margin:0;padding:0;overflow-x:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f6f7fb;color:#202124}.wrap{width:100%;max-width:980px;margin:0 auto;padding:18px 16px 50px;min-width:0}header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}h1{margin:0 0 5px;font-size:30px}.sub{color:#6b7280;line-height:1.5}button{border:0;border-radius:12px;padding:10px 14px;font-size:14px;cursor:pointer;background:#202124;color:#fff}.card{background:#fff;border:1px solid #e8e9ef;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 3px 14px #00000008}.datebar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.datebar input{font-size:17px;border:1px solid #ddd;border-radius:10px;padding:8px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#f8f9fc;border-radius:14px;padding:14px}.stat b{font-size:25px;display:block}.muted{color:#73777f;font-size:13px}.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.item{border:1px solid #e5e7eb;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}.item label{font-weight:600}.item small{display:block;color:#777;margin-top:4px;font-weight:400}.switch{width:46px;height:28px;border-radius:20px;background:#d9dce3;position:relative;flex:none}.switch:after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;top:3px;left:3px;box-shadow:0 1px 3px #0003;transition:.18s}.item.done .switch{background:#222}.item.done .switch:after{left:21px}textarea{width:100%;min-height:90px;border:1px solid #ddd;border-radius:12px;padding:12px;font:inherit;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap}.secondary{background:#eef0f4;color:#222}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;width:100%;min-width:0}.day{padding:8px 2px;text-align:center;border-radius:10px;font-size:12px;min-width:0;overflow:hidden}.visual-day{min-height:64px;cursor:pointer;background:#f3f4f6;padding:6px 3px}.daynum{font-weight:700;font-size:12px;margin-bottom:4px}.icons{display:flex;justify-content:center;gap:2px;font-size:17px;line-height:1}.icons span{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:7px}.icons .bad{background:#fff3e0}.dow{font-weight:700;color:#777;text-align:center;font-size:12px;padding:4px}.account{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#eef0f4;font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:#999}.online .dot{background:#21a366}.field{width:100%;padding:11px 12px;border:1px solid #ddd;border-radius:12px;font:inherit;margin:6px 0}.hidden{display:none!important}.progress{height:10px;background:#eceef2;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#222;border-radius:20px}.note{font-size:12px;line-height:1.6;color:#73777f}.install{background:#f0f6ff;border-color:#dbeafe}.danger{background:#fff0f0;color:#b42318}.syncing{opacity:.7}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:13px;z-index:99;max-width:90%;text-align:center}
-@media(max-width:650px){.wrap{width:100%;max-width:none;padding:10px 10px 36px}header{align-items:center}.sub{font-size:12px}.card{padding:14px;border-radius:16px}.checks,.stats{grid-template-columns:1fr}.item{padding:12px 10px}.calendar{gap:3px}.visual-day{min-height:58px;padding:4px 1px;border-radius:8px}.daynum{font-size:11px;margin-bottom:3px}.icons{gap:0;overflow:hidden}.icons span{width:auto;min-width:0;height:19px;font-size:13px;border-radius:4px}.actions button{flex:1}.account button{width:100%}h1{font-size:25px}}
-@media(max-width:380px){.wrap{padding-left:8px;padding-right:8px}.card{padding:12px}.visual-day{min-height:54px}.icons span{font-size:11px}}
+*{box-sizing:border-box}html,body{margin:0;padding:0;width:100%;min-width:0;overflow-x:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f6f7fb;color:#202124}.wrap{width:100%;max-width:980px;margin:auto;padding:16px 14px 50px}button,input,textarea{font:inherit}button{border:0;border-radius:12px;padding:10px 14px;cursor:pointer;background:#202124;color:#fff}button.secondary{background:#eef0f4;color:#202124}button.danger{background:#fff0f0;color:#b42318}.card{background:#fff;border:1px solid #e8e9ef;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 3px 14px #00000008}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.top h1{margin:0 0 4px;font-size:30px}.sub,.muted,.note{color:#73777f}.sub{line-height:1.5}.muted,.note{font-size:13px;line-height:1.6}.account,.monthbar,.datebar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.account h2,.card h2{margin:0 0 5px}.status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#eef0f4;font-size:12px;white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:#999}.online .dot{background:#21a366}.syncing .dot{background:#e5a100}.field{width:100%;padding:11px 12px;border:1px solid #ddd;border-radius:12px;margin:6px 0;background:#fff}.hidden{display:none!important}.actions{display:flex;gap:10px;flex-wrap:wrap}.datebar input{padding:8px 10px;border:1px solid #ddd;border-radius:10px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#f8f9fc;border-radius:14px;padding:14px}.stat b{display:block;font-size:25px;margin:2px 0}.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.item{border:1px solid #e5e7eb;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer}.item label{font-weight:700}.item small{display:block;color:#777;margin-top:4px;font-weight:400}.switch{width:46px;height:28px;border-radius:20px;background:#d9dce3;position:relative;flex:none}.switch:after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;top:3px;left:3px;box-shadow:0 1px 3px #0003;transition:.18s}.item.done .switch{background:#222}.item.done .switch:after{left:21px}.moods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.mood.active{background:#202124;color:#fff}.mood:not(.active){background:#eef0f4;color:#202124}textarea{width:100%;min-height:100px;padding:12px;border:1px solid #ddd;border-radius:12px;resize:vertical}.month-title{font-size:21px;font-weight:700}.monthbar button{width:42px;height:40px;padding:0;font-size:22px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:12px}.dow{text-align:center;color:#777;font-weight:700;font-size:12px;padding:5px 0}.day{min-width:0;min-height:68px;border:1px solid #edf0f3;border-radius:10px;background:#fff;padding:6px 3px;text-align:center;cursor:pointer}.day.other{background:transparent;border-color:transparent;cursor:default}.day.today{outline:2px solid #202124;outline-offset:-2px}.day.selected{box-shadow:inset 0 0 0 2px #9aa0a6}.daynum{font-size:12px;font-weight:700;color:#6f747b}.icons{min-height:25px;margin-top:5px;display:flex;align-items:center;justify-content:center;gap:1px;overflow:hidden}.icons span{display:flex;align-items:center;justify-content:center;width:22px;height:22px;font-size:15px}.empty-icon{color:#c7cbd1;font-size:13px}.legend{font-size:12px;color:#73777f;line-height:1.7;margin-top:8px}.progress{height:9px;background:#eceef2;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#202124;border-radius:20px}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:13px;z-index:100;max-width:90%;text-align:center}.install{background:#f0f6ff;border-color:#dbeafe}.cloud-help{margin-top:8px}.cloud-buttons{margin-top:8px}.loading{opacity:.65;pointer-events:none}
+@media(max-width:650px){.wrap{padding:10px 9px 36px}.top h1{font-size:26px}.card{padding:14px;border-radius:16px}.stats,.checks{grid-template-columns:1fr}.item{padding:12px 10px}.actions button{flex:1}.calendar{gap:3px}.day{min-height:58px;padding:4px 1px;border-radius:8px}.daynum{font-size:11px}.icons span{width:18px;height:19px;font-size:12px}.month-title{font-size:19px}.top>button{white-space:nowrap}}
+@media(max-width:380px){.wrap{padding-left:7px;padding-right:7px}.card{padding:12px}.day{min-height:53px}.icons span{font-size:11px;width:16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header><div><h1>我的每日打卡</h1><div class="sub">戒烟 · 早睡 · 今天没有手淫 · 健康饮食 · 运动 · 省钱/赚钱</div></div><button onclick="resetToday()">清空今天</button></header>
+  <header class="top">
+    <div><h1>我的每日打卡</h1><div class="sub">戒烟 · 早睡 · 今天没有手淫 · 健康饮食 · 运动 · 省钱/赚钱</div></div>
+    <button onclick="resetSelectedDay()">清空当天</button>
+  </header>
 
-<div class="card" id="cloudCard">
-  <div class="account"><div><h2 style="margin:0 0 5px">☁️ 云端同步</h2><div class="muted" id="cloudDesc">登录后，手机和平板使用同一个账号即可同步打卡。</div></div><span class="status" id="syncStatus"><span class="dot"></span><span id="syncText">未连接</span></span></div>
-  <div id="configBox" class="hidden" style="margin-top:12px">
-    <div class="note">第一次使用需要填写 Supabase 项目地址和 anon/public key。它们不是密码；千万不要填写 service_role key。</div>
-    <input class="field" id="sbUrl" placeholder="Supabase Project URL，例如 https://xxxx.supabase.co">
-    <input class="field" id="sbKey" placeholder="Supabase anon public key">
-    <button onclick="saveConfig()">保存云端配置</button>
-  </div>
-  <div id="authBox" class="hidden" style="margin-top:12px">
-    <input class="field" id="email" type="email" placeholder="邮箱">
-    <input class="field" id="password" type="password" placeholder="密码（至少6位）">
-    <div class="actions"><button onclick="signUp()">注册账号</button><button class="secondary" onclick="signIn()">登录</button><button class="secondary" onclick="showConfig()">修改配置</button></div>
-    <div class="note" style="margin-top:8px">同一个账号可以在手机、平板上登录。若注册后提示需要确认邮箱，请先去邮箱完成确认。</div>
-  </div>
-  <div id="userBox" class="hidden" style="margin-top:12px"><div class="account"><span id="userEmail" class="muted"></span><div class="actions"><button class="secondary" onclick="syncAll()">立即同步</button><button class="danger" onclick="signOutUser()">退出账号</button></div></div></div>
-</div>
+  <section class="card" id="cloudCard">
+    <div class="account"><div><h2>☁️ 云端同步</h2><div class="muted">登录后，手机和平板使用同一个账号即可同步打卡。</div></div><span class="status" id="syncStatus"><span class="dot"></span><span id="syncText">未连接</span></span></div>
+    <div id="configBox" class="cloud-help">
+      <div class="note">第一次使用填写 Supabase 项目地址和 Publishable key（或旧版 anon public key）。不要填写 Service Role / Secret key。</div>
+      <input class="field" id="sbUrl" placeholder="Supabase Project URL，例如 https://xxxx.supabase.co">
+      <input class="field" id="sbKey" placeholder="Publishable key / anon public key">
+      <div class="actions cloud-buttons"><button onclick="saveConfig()">保存并连接</button></div>
+    </div>
+    <div id="authBox" class="hidden cloud-help">
+      <input class="field" id="email" type="email" autocomplete="email" placeholder="邮箱">
+      <input class="field" id="password" type="password" autocomplete="current-password" placeholder="密码（至少6位）">
+      <div class="actions"><button onclick="signUp()">注册账号</button><button class="secondary" onclick="signIn()">登录</button><button class="secondary" onclick="showConfig()">修改配置</button></div>
+      <div class="note" style="margin-top:8px">如果注册后提示确认邮箱，请先完成邮箱确认，再回到这里登录。</div>
+    </div>
+    <div id="userBox" class="hidden cloud-help"><div class="account"><span id="userEmail" class="muted"></span><div class="actions"><button class="secondary" onclick="syncAll()">立即同步</button><button class="danger" onclick="signOutUser()">退出账号</button></div></div></div>
+  </section>
 
-<div class="card datebar"><div><b>今天记录哪一天？</b></div><input id="date" type="date" onchange="render()"></div>
-<div class="card"><div class="stats"><div class="stat"><span class="muted">连续戒烟</span><b id="smokeStreak">0 天</b><span class="muted">从最近一次吸烟记录计算</span></div><div class="stat"><span class="muted">今日完成</span><b id="todayPct">0%</b><span class="muted">习惯打卡进度</span></div><div class="stat"><span class="muted">本月完成</span><b id="monthPct">0%</b><span class="muted">按每日习惯平均</span></div></div></div>
-<div class="card"><div class="datebar"><h2 style="margin:0">今日打卡</h2><span class="muted" id="dateText"></span></div><div class="checks" id="checks"></div></div>
-<div class="card"><h2 style="margin-top:0">今天的状态</h2><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"><button class="mood" onclick="setMood('很好')">😄 很好</button><button class="mood secondary" onclick="setMood('一般')">🙂 一般</button><button class="mood secondary" onclick="setMood('有压力')">😣 有压力</button><button class="mood secondary" onclick="setMood('低落')">😔 低落</button></div><textarea id="note" placeholder="记录一下今天：什么时候最想抽烟？几点睡的？有什么值得表扬自己的地方？"></textarea></div>
-<div class="card"><h2 style="margin-top:0">本月打卡日历</h2><div class="muted">三项都完成显示 🙂；否则只显示没做到的项目：🚬吸烟、💤没早睡、🧻有手淫。</div><div class="calendar" id="calendar"></div></div>
-<div class="card"><h2 style="margin-top:0">数据与备份</h2><p class="muted">登录云端后，记录会同步到你的 Supabase 数据库。仍保留 JSON 导入/导出，方便备份。</p><div class="actions"><button onclick="exportData()">导出备份 JSON</button><button class="secondary" onclick="importData()">导入备份 JSON</button></div></div>
-<div class="card install"><h3 style="margin-top:0">🏠 添加到手机/平板桌面</h3><div class="note">网页发布到 HTTPS 后，在 Edge/Chrome 菜单中选择“添加至手机/添加到主屏幕/安装应用”。本页面已经准备好 PWA 配置。</div></div>
+  <section class="card datebar"><b>今天记录哪一天？</b><input id="date" type="date" onchange="renderAll()"></section>
+
+  <section class="card"><div class="stats"><div class="stat"><span class="muted">连续戒烟</span><b id="smokeStreak">0 天</b><span class="muted">从最近一次吸烟记录计算</span></div><div class="stat"><span class="muted">当天完成</span><b id="todayPct">0%</b><span class="muted">6 项习惯完成进度</span></div><div class="stat"><span class="muted">本月完成</span><b id="monthPct">0%</b><span class="muted">已有记录的日期平均</span></div></div></section>
+
+  <section class="card"><div class="datebar"><h2>今日打卡</h2><span class="muted" id="dateText"></span></div><div class="checks" id="checks"></div></section>
+
+  <section class="card"><h2>今天的状态</h2><div class="moods" id="moods"><button class="mood" data-mood="很好" onclick="setMood('很好')">😄 很好</button><button class="mood" data-mood="一般" onclick="setMood('一般')">🙂 一般</button><button class="mood" data-mood="有压力" onclick="setMood('有压力')">😣 有压力</button><button class="mood" data-mood="低落" onclick="setMood('低落')">😔 低落</button></div><textarea id="note" placeholder="记录一下今天：什么时候最想抽烟？几点睡的？有什么值得表扬自己的地方？"></textarea></section>
+
+  <section class="card"><div class="monthbar"><button class="secondary" onclick="changeMonth(-1)" aria-label="上个月">‹</button><div class="month-title" id="monthTitle"></div><button class="secondary" onclick="changeMonth(1)" aria-label="下个月">›</button></div><div class="calendar" id="calendar"></div><div class="legend">🙂 三项关键目标全部完成　🚬 吸烟　💤 没按计划早睡　🧻 今天有手淫<br>未记录的日期不显示失败图标；一个月的日期完整显示。</div></section>
+
+  <section class="card"><h2>数据与备份</h2><div class="muted">本机自动保存。登录云端后，记录会同步到 Supabase。仍可用 JSON 备份/恢复。</div><div class="actions" style="margin-top:10px"><button onclick="exportData()">导出备份 JSON</button><button class="secondary" onclick="importData()">导入备份 JSON</button></div></section>
+  <section class="card install"><h3 style="margin:0 0 6px">🏠 添加到手机/平板桌面</h3><div class="note">本网页已准备 PWA 配置。Edge 菜单中如果出现“添加到手机/添加到主屏幕/安装应用”，即可添加。</div></section>
 </div>
 <div id="toast" class="toast hidden"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const habits=[{id:"smoke",name:"今天没有吸烟",desc:"坚持一天，就是一天的胜利"},{id:"sleep",name:"按计划早睡",desc:"记录你的睡眠目标"},{id:"nofap",name:"今天没有手淫",desc:"今天保持住自己的计划"},{id:"diet",name:"低热量健康饮食",desc:"控制热量，选择更健康的食物"},{id:"exercise",name:"运动健身",desc:"完成今天的运动目标"},{id:"money",name:"省一笔钱（赚一笔钱）",desc:"今天少花一笔，或主动赚一笔"}];
-let db=JSON.parse(localStorage.getItem("dailyHabitDB")||"{}");let supabase=null;let currentUser=null;let syncTimer=null;let config=JSON.parse(localStorage.getItem("supabaseConfig")||"null");
-const DEFAULT_SB_URL="https://adoocohumgvxnlngxdwr.supabase.co";
-const pad=n=>String(n).padStart(2,"0");function today(){let x=new Date();return x.getFullYear()+"-"+pad(x.getMonth()+1)+"-"+pad(x.getDate())}function showToast(s){const e=document.getElementById('toast');e.textContent=s;e.classList.remove('hidden');clearTimeout(showToast.t);showToast.t=setTimeout(()=>e.classList.add('hidden'),2400)}
-function key(d){return d}function getDay(d){if(!db[d])db[d]={done:{},mood:"",note:""};return db[d]}function saveLocal(){localStorage.setItem("dailyHabitDB",JSON.stringify(db))}
-function setSyncStatus(text,online=false){document.getElementById('syncText').textContent=text;document.getElementById('syncStatus').classList.toggle('online',online)}
-function showConfig(){document.getElementById('configBox').classList.remove('hidden');document.getElementById('authBox').classList.add('hidden');if(config){sbUrl.value=config.url||DEFAULT_SB_URL;sbKey.value=config.key||''}else{sbUrl.value=DEFAULT_SB_URL}}
-function saveConfig(){const url=sbUrl.value.trim().replace(/\/$/,'');const key=sbKey.value.trim();if(!url||!key){showToast('请填写 Supabase URL 和 anon key');return}config={url,key};localStorage.setItem('supabaseConfig',JSON.stringify(config));initSupabase();showToast('云端配置已保存')}
-async function initSupabase(){if(!config){document.getElementById('configBox').classList.remove('hidden');sbUrl.value=DEFAULT_SB_URL;setSyncStatus('未配置');return}try{const {createClient}=window.supabase;supabase=createClient(config.url,config.key);const {data:{session}}=await supabase.auth.getSession();if(session){currentUser=session.user;onLoggedIn()}else{document.getElementById('authBox').classList.remove('hidden');setSyncStatus('待登录')}supabase.auth.onAuthStateChange((_event,session)=>{if(session){currentUser=session.user;onLoggedIn()}else{currentUser=null;document.getElementById('userBox').classList.add('hidden');document.getElementById('authBox').classList.remove('hidden');setSyncStatus('待登录')}})}catch(e){setSyncStatus('配置错误');showToast('Supabase 配置无效，请检查 URL 和 key')}}
-async function signUp(){if(!supabase){showToast('请先配置云端');showConfig();return}const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||password.length<6){showToast('请输入邮箱和至少6位密码');return}const {error}=await supabase.auth.signUp({email,password});if(error)showToast(error.message);else showToast('注册成功；如要求确认邮箱，请先确认邮箱后再登录')}
-async function signIn(){if(!supabase){showConfig();return}const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;const {error}=await supabase.auth.signInWithPassword({email,password});if(error)showToast(error.message)}
-async function signOutUser(){await supabase.auth.signOut();showToast('已退出账号')}
-function onLoggedIn(){document.getElementById('authBox').classList.add('hidden');document.getElementById('configBox').classList.add('hidden');document.getElementById('userBox').classList.remove('hidden');document.getElementById('userEmail').textContent='已登录：'+currentUser.email;setSyncStatus('正在同步…');syncAll()}
-async function syncAll(){if(!supabase||!currentUser)return;setSyncStatus('正在同步…');try{const {data,error}=await supabase.from('daily_records').select('record_date,data,updated_at').eq('user_id',currentUser.id);if(error)throw error;let changed=false;for(const row of data||[]){const k=row.record_date;const incoming=row.data||{};if(!db[k]||JSON.stringify(db[k])!==JSON.stringify(incoming)){db[k]=incoming;changed=true}}if(changed)saveLocal();const rows=Object.entries(db).map(([record_date,data])=>({user_id:currentUser.id,record_date,data,updated_at:new Date().toISOString()}));if(rows.length){const {error:e2}=await supabase.from('daily_records').upsert(rows,{onConflict:'user_id,record_date'});if(e2)throw e2}setSyncStatus('已同步',true);render()}catch(e){console.error(e);setSyncStatus('同步失败');showToast('同步失败：'+(e.message||'请检查 Supabase 设置'))}}
-function queueSync(){if(!currentUser)return;clearTimeout(syncTimer);setSyncStatus('待同步',true);syncTimer=setTimeout(syncChanged,500)}
-async function syncChanged(){if(!supabase||!currentUser)return;const d=document.getElementById('date').value||today(),rec=db[d];try{const {error}=await supabase.from('daily_records').upsert({user_id:currentUser.id,record_date:d,data:rec,updated_at:new Date().toISOString()},{onConflict:'user_id,record_date'});if(error)throw error;setSyncStatus('已同步',true)}catch(e){setSyncStatus('同步失败');showToast('云端保存失败：'+e.message)}}
-function render(){const d=document.getElementById('date').value||today(),rec=getDay(d);document.getElementById('dateText').textContent=d;const box=document.getElementById('checks');box.innerHTML='';habits.forEach(h=>{const el=document.createElement('div');el.className='item '+(rec.done[h.id]?'done':'');el.innerHTML=`<div><label>${h.name}</label><small>${h.desc}</small></div><div class="switch"></div>`;el.onclick=()=>{rec.done[h.id]=!rec.done[h.id];saveLocal();render();queueSync()};box.appendChild(el)});const note=document.getElementById('note');note.value=rec.note||'';note.oninput=()=>{rec.note=note.value;saveLocal();queueSync()};calcStats(d);renderCalendar(d)}
-function calcStats(d){const rec=getDay(d),count=habits.filter(h=>rec.done[h.id]).length;document.getElementById('todayPct').textContent=Math.round(count/habits.length*100)+'%';let x=new Date(d+'T12:00:00'),streak=0;while(true){const k=x.getFullYear()+'-'+pad(x.getMonth()+1)+'-'+pad(x.getDate()),r=db[k];if(!r||!r.done.smoke)break;streak++;x.setDate(x.getDate()-1)}document.getElementById('smokeStreak').textContent=streak+' 天';const [y,m]=d.split('-').map(Number),days=new Date(y,m,0).getDate();let total=0,den=0;for(let i=1;i<=days;i++){const k=y+'-'+pad(m)+'-'+pad(i);if(db[k]){total+=habits.filter(h=>db[k].done[h.id]).length;den+=habits.length}}document.getElementById('monthPct').textContent=den?Math.round(total/den*100)+'%':'0%'}
-function renderCalendar(d){const [y,m]=d.split('-').map(Number),first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate(),cal=document.getElementById('calendar');cal.innerHTML=['日','一','二','三','四','五','六'].map(x=>`<div class="dow">${x}</div>`).join('');for(let i=0;i<first;i++)cal.innerHTML+='<div></div>';for(let i=1;i<=days;i++){const k=y+'-'+pad(m)+'-'+pad(i),r=db[k]||{done:{}};const allThreeDone=!!(r.done.smoke&&r.done.sleep&&r.done.nofap);const failureIcons=[!r.done.smoke?'<span class="bad" title="今天吸烟了">🚬</span>':'',!r.done.sleep?'<span class="bad" title="没有按计划早睡">💤</span>':'',!r.done.nofap?'<span class="bad" title="今天有手淫">🧻</span>':''].join('');const icons=allThreeDone?'<span title="前三项全部完成">🙂</span>':failureIcons;cal.innerHTML+=`<div class="day visual-day ${k===today()?'today':''}" onclick="selectDate('${k}')"><div class="daynum">${i}</div><div class="icons">${icons}</div></div>`}}
-function selectDate(k){document.getElementById('date').value=k;render();window.scrollTo({top:0,behavior:'smooth'})}
-function setMood(m){const d=document.getElementById('date').value||today();getDay(d).mood=m;saveLocal();queueSync();showToast('今天心情：'+m)}
-function resetToday(){const d=document.getElementById('date').value||today();if(confirm('确定清空这一天的打卡和备注吗？')){delete db[d];saveLocal();render();queueSync()}}
-function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='我的每日打卡备份.json';a.click();URL.revokeObjectURL(a.href)}
-function importData(){const input=document.createElement('input');input.type='file';input.accept='.json';input.onchange=()=>{const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);saveLocal();render();if(currentUser)syncAll();showToast('导入成功并开始同步')}catch(e){showToast('文件格式不正确')}};r.readAsText(f)};input.click()}
-document.getElementById('date').value=today();document.getElementById('sbUrl').value=(config&&config.url)||DEFAULT_SB_URL;if(config){document.getElementById('sbKey').value=config.key||''}initSupabase();render();if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}))}
+'use strict';
+const habits=[
+ {id:'smoke',name:'今天没有吸烟',desc:'坚持一天，就是一天的胜利'},
+ {id:'sleep',name:'按计划早睡',desc:'记录你的睡眠目标'},
+ {id:'nofap',name:'今天没有手淫',desc:'今天保持住自己的计划'},
+ {id:'diet',name:'低热量健康饮食',desc:'控制热量，选择更健康的食物'},
+ {id:'exercise',name:'运动健身',desc:'完成今天的运动目标'},
+ {id:'money',name:'省一笔钱（赚一笔钱）',desc:'今天少花一笔，或主动赚一笔'}
+];
+const DEFAULT_SB_URL='https://adoocohumgvxnlngxdwr.supabase.co';
+let db=loadJSON('dailyHabitDB',{});
+let config=loadJSON('supabaseConfig',null);
+let supabaseClient=null,currentUser=null,syncTimer=null,authListenerSet=false;
+let viewMonth=null;
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
+function loadJSON(k,fallback){try{const v=localStorage.getItem(k);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function saveLocal(){localStorage.setItem('dailyHabitDB',JSON.stringify(db))}
+function today(){const x=new Date();return `${x.getFullYear()}-${pad(x.getMonth()+1)}-${pad(x.getDate())}`}
+function validDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(s)}
+function getDay(d){if(!db[d]||typeof db[d]!=='object')db[d]={done:{},mood:'',note:''};if(!db[d].done)db[d].done={};return db[d]}
+function showToast(msg){const e=$('toast');e.textContent=msg;e.classList.remove('hidden');clearTimeout(showToast.t);showToast.t=setTimeout(()=>e.classList.add('hidden'),2500)}
+function setSyncStatus(text,state='off'){const s=$('syncStatus');$('syncText').textContent=text;s.classList.toggle('online',state==='online');s.classList.toggle('syncing',state==='syncing')}
+function showConfig(){ $('configBox').classList.remove('hidden');$('authBox').classList.add('hidden');$('userBox').classList.add('hidden');$('sbUrl').value=(config&&config.url)||DEFAULT_SB_URL;$('sbKey').value=(config&&config.key)||'';setSyncStatus('未连接') }
+function saveConfig(){const url=$('sbUrl').value.trim().replace(/\/$/,'');const key=$('sbKey').value.trim();if(!/^https:\/\//.test(url)||!key){showToast('请填写正确的 Supabase URL 和 Publishable/anon key');return}config={url,key};localStorage.setItem('supabaseConfig',JSON.stringify(config));initSupabase(true)}
+async function initSupabase(showMessage=false){
+ if(!config){showConfig();return}
+ try{
+  if(!window.supabase||!window.supabase.createClient)throw new Error('Supabase 客户端没有加载成功，请稍后刷新网页');
+  const createClient=window.supabase.createClient;
+  supabaseClient=createClient(config.url,config.key);
+  const {data,error}=await supabaseClient.auth.getSession();
+  if(error)throw error;
+  if(!authListenerSet){
+   supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session){currentUser=session.user;showLoggedIn();}else{currentUser=null;showLoggedOut();}});
+   authListenerSet=true;
+  }
+  if(data&&data.session){currentUser=data.session.user;showLoggedIn();}
+  else showLoggedOut();
+  if(showMessage)showToast('云端连接成功，请登录或注册');
+ }catch(e){console.error(e);setSyncStatus('连接异常');$('configBox').classList.remove('hidden');$('authBox').classList.add('hidden');showToast('云端连接失败：'+(e.message||'请检查配置'))}
+}
+function showLoggedOut(){if(config){$('configBox').classList.add('hidden');$('authBox').classList.remove('hidden')}$('userBox').classList.add('hidden');setSyncStatus('待登录')}
+function showLoggedIn(){ $('configBox').classList.add('hidden');$('authBox').classList.add('hidden');$('userBox').classList.remove('hidden');$('userEmail').textContent='已登录：'+(currentUser.email||'当前账号');setSyncStatus('正在同步…','syncing');syncAll() }
+async function signUp(){if(!supabaseClient){showConfig();return}const email=$('email').value.trim(),password=$('password').value;if(!email||password.length<6){showToast('请输入邮箱和至少6位密码');return}try{const {error}=await supabaseClient.auth.signUp({email,password});if(error)throw error;showToast('注册请求已提交；如需验证邮箱，请先完成验证后再登录')}catch(e){showToast('注册失败：'+(e.message||'请检查邮箱'))}}
+async function signIn(){if(!supabaseClient){showConfig();return}const email=$('email').value.trim(),password=$('password').value;if(!email||!password){showToast('请输入邮箱和密码');return}try{const {error}=await supabaseClient.auth.signInWithPassword({email,password});if(error)throw error;showToast('登录成功，正在同步')}catch(e){showToast('登录失败：'+(e.message||'请检查账号密码'))}}
+async function signOutUser(){if(!supabaseClient)return;await supabaseClient.auth.signOut();setSyncStatus('已退出')}
+function localRecordChanged(d){getDay(d)._localUpdatedAt=new Date().toISOString();saveLocal()}
+function cleanRecord(rec){const x=JSON.parse(JSON.stringify(rec||{}));delete x._localUpdatedAt;return {done:x.done||{},mood:x.mood||'',note:x.note||''}}
+async function syncAll(){if(!supabaseClient||!currentUser)return;setSyncStatus('正在同步…','syncing');try{
+ const {data:remote,error}=await supabaseClient.from('daily_records').select('record_date,data,updated_at').eq('user_id',currentUser.id);
+ if(error)throw error;
+ const remoteMap={};(remote||[]).forEach(r=>remoteMap[r.record_date]=r);
+ let changed=false;
+ // Remote records are loaded first. If local has a newer _localUpdatedAt, local wins; otherwise remote wins.
+ for(const [date,rr] of Object.entries(remoteMap)){
+   const local=db[date],localTime=local&&local._localUpdatedAt?new Date(local._localUpdatedAt).getTime():0,remoteTime=rr.updated_at?new Date(rr.updated_at).getTime():0;
+   if(!local || remoteTime>=localTime){db[date]=rr.data||{done:{},mood:'',note:''};changed=true}
+ }
+ if(changed)saveLocal();
+ const rows=[];
+ for(const [date,rec] of Object.entries(db)){
+   if(!validDate(date))continue;
+   const localTime=rec&&rec._localUpdatedAt?new Date(rec._localUpdatedAt).getTime():0;
+   const rr=remoteMap[date];
+   if(!rr || localTime>new Date(rr.updated_at||0).getTime())rows.push({user_id:currentUser.id,record_date:date,data:cleanRecord(rec),updated_at:rec._localUpdatedAt||new Date().toISOString()});
+ }
+ if(rows.length){const {error:e2}=await supabaseClient.from('daily_records').upsert(rows,{onConflict:'user_id,record_date'});if(e2)throw e2;rows.forEach(r=>{if(db[r.record_date])delete db[r.record_date]._localUpdatedAt});saveLocal()}
+ setSyncStatus('已同步','online');renderAll();
+ }catch(e){console.error(e);setSyncStatus('同步失败');showToast('同步失败：'+(e.message||'请检查 RLS 和 daily_records 表'))}}
+function queueSync(){if(!currentUser)return;clearTimeout(syncTimer);setSyncStatus('待同步','online');syncTimer=setTimeout(syncCurrentDay,700)}
+async function syncCurrentDay(){if(!supabaseClient||!currentUser)return;const d=$('date').value||today(),rec=getDay(d);try{const payload={user_id:currentUser.id,record_date:d,data:cleanRecord(rec),updated_at:new Date().toISOString()};const {error}=await supabaseClient.from('daily_records').upsert(payload,{onConflict:'user_id,record_date'});if(error)throw error;delete rec._localUpdatedAt;saveLocal();setSyncStatus('已同步','online')}catch(e){setSyncStatus('同步失败');showToast('云端保存失败：'+(e.message||'请检查 RLS'))}}
+function markLocal(d){getDay(d)._localUpdatedAt=new Date().toISOString();saveLocal();queueSync()}
+function renderChecks(d){const rec=getDay(d),box=$('checks');box.innerHTML='';habits.forEach(h=>{const el=document.createElement('div');el.className='item'+(rec.done[h.id]?' done':'');el.innerHTML=`<div><label>${h.name}</label><small>${h.desc}</small></div><div class="switch" aria-hidden="true"></div>`;el.onclick=()=>{rec.done[h.id]=!rec.done[h.id];markLocal(d);renderAll()};box.appendChild(el)})}
+function renderMood(d){const m=getDay(d).mood;document.querySelectorAll('.mood').forEach(b=>b.classList.toggle('active',b.dataset.mood===m));$('note').value=getDay(d).note||''}
+function renderStats(d){const rec=getDay(d),doneCount=habits.filter(h=>rec.done[h.id]).length;$('todayPct').textContent=Math.round(doneCount/habits.length*100)+'%';let x=new Date(d+'T12:00:00'),streak=0;while(true){const k=`${x.getFullYear()}-${pad(x.getMonth()+1)}-${pad(x.getDate())}`;const r=db[k];if(!r||!r.done||!r.done.smoke)break;streak++;x.setDate(x.getDate()-1)}$('smokeStreak').textContent=streak+' 天';const [y,m]=d.split('-').map(Number),days=new Date(y,m,0).getDate();let total=0,den=0;for(let i=1;i<=days;i++){const k=`${y}-${pad(m)}-${pad(i)}`;if(db[k]){total+=habits.filter(h=>db[k].done&&db[k].done[h.id]).length;den+=habits.length}}$('monthPct').textContent=den?Math.round(total/den*100)+'%':'0%'}
+function iconHTML(rec){if(!rec||!rec.done)return '';const done=rec.done;if(done.smoke&&done.sleep&&done.nofap)return '<span title="前三项全部完成">🙂</span>';let s='';if(!done.smoke)s+='<span title="今天吸烟了/未完成戒烟">🚬</span>';if(!done.sleep)s+='<span title="没有按计划早睡">💤</span>';if(!done.nofap)s+='<span title="今天有手淫/未完成">🧻</span>';return s}
+function renderCalendar(){const d=$('date').value||today();const base=viewMonth||d.slice(0,7);const [y,m]=base.split('-').map(Number);const first=new Date(y,m-1,1).getDay();const days=new Date(y,m,0).getDate();$('monthTitle').textContent=`${y}年${m}月`;let html=['日','一','二','三','四','五','六'].map(x=>`<div class="dow">${x}</div>`).join('');for(let i=0;i<first;i++)html+='<div class="day other"></div>';for(let i=1;i<=days;i++){const k=`${y}-${pad(m)}-${pad(i)}`,rec=db[k],icons=iconHTML(rec);html+=`<div class="day visual-day ${k===today()?'today ':''}${k===d?'selected':''}" onclick="selectDate('${k}')"><div class="daynum">${i}</div><div class="icons">${icons||'<span class="empty-icon">·</span>'}</div></div>`}$('calendar').innerHTML=html}
+function renderAll(){const d=$('date').value||today();if(!validDate(d)){$('date').value=today()}viewMonth=d.slice(0,7);$('dateText').textContent=d;$('date').value=d;renderChecks(d);renderMood(d);renderStats(d);renderCalendar()}
+function selectDate(k){$('date').value=k;renderAll();window.scrollTo({top:0,behavior:'smooth'})}
+function changeMonth(delta){const base=viewMonth||$('date').value.slice(0,7)||today().slice(0,7);const [y,m]=base.split('-').map(Number);const x=new Date(y,m-1+delta,1);viewMonth=`${x.getFullYear()}-${pad(x.getMonth()+1)}`;renderCalendar()}
+function setMood(m){const d=$('date').value||today();getDay(d).mood=m;markLocal(d);renderMood(d);showToast('今天心情：'+m)}
+function resetSelectedDay(){const d=$('date').value||today();if(!confirm(`确定清空 ${d} 的打卡、心情和备注吗？`))return;delete db[d];saveLocal();renderAll();queueSync();showToast('当天记录已清空')}
+function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='我的每日打卡备份.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{const f=input.files&&input.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const incoming=JSON.parse(r.result);if(!incoming||typeof incoming!=='object'||Array.isArray(incoming))throw new Error('格式');db=incoming;saveLocal();renderAll();if(currentUser)syncAll();showToast('导入成功')}catch(e){showToast('JSON 文件格式不正确')}};r.readAsText(f)};input.click()}
+$('note').oninput=()=>{const d=$('date').value||today();getDay(d).note=$('note').value;markLocal(d)};
+window.addEventListener('DOMContentLoaded',()=>{const d=today();$('date').value=d;$('sbUrl').value=(config&&config.url)||DEFAULT_SB_URL;if(config)$('sbKey').value=config.key||'';renderAll();initSupabase(false);if('serviceWorker' in navigator)navigator.serviceWorker.register('service-worker.js').catch(e=>console.warn('SW',e))});
 </script>
-</body></html>
+</body>
+</html>
